@@ -2,7 +2,6 @@
 // TASK: import initialData
 import {
   getTasks,
-  saveTasks,
   createNewTask,
   patchTask,
   putTask,
@@ -37,8 +36,11 @@ const elements = {
   sideBar: document.getElementById('side-bar-div')
 };
 
+document.getElementById("boards-nav-links-div").style.marginTop ="50px",
+document.getElementById("boards-nav-links-div").style.marginBottom ="300px";
+ 
 
-let activeBoard = "";
+let activeBoard = ""; 
 
 // Extracts unique board names from tasks
 // TASK: FIX BUGS##
@@ -226,7 +228,6 @@ function addTask(event) {
 }
 
 function toggleSidebar(show) {
-  console.log(show)
 const showSideBarBtn = document.getElementById('show-side-bar-btn');
 elements.sideBar.classList.toggle("show",show);
 localStorage.setItem("showSideBar", show)
@@ -273,7 +274,8 @@ function openEditTaskModal(task) {
 
   // Call saveTaskChanges upon click of Save Changes button
   document.getElementById("create-task-btn").addEventListener("click", () => {
-    console.log("hello");
+   
+
    
   });
 
@@ -313,8 +315,9 @@ function saveTaskChanges(taskId) {
   putTask(task);
   
 
-  // Update task using a hlper functoin
+  // Update task using a helper functoin
   patchTask(taskId, task);
+
   // Close the modal and refresh the UI to reflect the changes
   toggleModal(false, elements.editTaskModal);
   refreshTasksUI();
